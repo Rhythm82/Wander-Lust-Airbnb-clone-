@@ -1,0 +1,225 @@
+<% layout('/layouts/boilerplate.ejs') %>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="mt-3 heading">
+        <h2>Register your Hotel</h2>
+      </div>
+      <hr />
+      <form
+        action="/list"
+        method="POST"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label">Name:</label>
+          <input
+            type="text"
+            name="regDetails[title]"
+            placeholder="Enter you hotel name"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Enter the correct name</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description:</label>
+          <textarea
+            name="regDetails[description]"
+            id=""
+            cols="30"
+            rows="8"
+            placeholder="Enter Spiciality of you hotel"
+            class="form-control"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Image:</label>
+          <input
+            type="file"
+            name="regDetails[image]"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="price" class="form-label">Price:</label>
+          <input
+            type="number"
+            name="regDetails[price]"
+            placeholder="Enter you hotel price"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Enter the correct price</div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-8">
+            <label for="location" class="form-label">Locaton:</label>
+            <input
+              type="text"
+              name="regDetails[location]"
+              placeholder="Enter you hotel location"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Enter the correct location</div>
+          </div>
+
+          <div class="mb-3 col-4">
+            <label for="country" class="form-label">Country:</label>
+            <input
+              type="text"
+              name="regDetails[country]"
+              placeholder="Enter you Country"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Enter the correct country</div>
+          </div>
+        </div>
+
+        <!-- Amenities Section -->
+
+        <div class="row mt-4">
+          <div class="col-12">
+            <h5 class="text-primary fw-bold mb-3" style="font-size: 1.25rem">
+              What this place offers:
+            </h5>
+          </div>
+
+          <!-- Left Column -->
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Kitchen"
+              />
+              <label class="form-check-label">Kitchen</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Wifi"
+              />
+              <label class="form-check-label">Wifi</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Dedicated workspace"
+              />
+              <label class="form-check-label">Dedicated workspace</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Free parking on premises"
+              />
+              <label class="form-check-label">Free parking on premises</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Pool"
+              />
+              <label class="form-check-label">Pool</label>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Personal TV"
+              />
+              <label class="form-check-label">Personal TV</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Lift"
+              />
+              <label class="form-check-label">Lift</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Air conditioning"
+              />
+              <label class="form-check-label">Air conditioning</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Smoking"
+              />
+              <label class="form-check-label">Smoking</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input box"
+                type="checkbox"
+                name="regDetails[amenities][]"
+                value="Outside Food"
+              />
+              <label class="form-check-label">Outside Food</label>
+            </div>
+          </div>
+        </div>
+
+        <hr class="mt-3" />
+
+        <div class="mb-3">
+          <label for="category" class="form-label">Select Category</label>
+          <select class="form-select" name="regDetails[category]" required>
+            <option disabled selected>Select one</option>
+            <option value="Trending">Trending</option>
+            <option value="Rooms">Rooms</option>
+            <option value="Amazing Views">Amazing Views</option>
+            <option value="Beach">Beach</option>
+            <option value="Pool">Pool</option>
+            <option value="Amazing Cities">Amazing Cities</option>
+            <option value="Castles">Castles</option>
+            <option value="Camping">Camping</option>
+            <option value="Forest">Forest</option>
+            <option value="Caravan">Caravan</option>
+            <option value="Arctic">Arctic</option>
+          </select>
+        </div>
+
+        <hr class="mt-3" />
+
+        <button type="submit" class="btn btn-update mb-4">
+          <span class="regText">Register</span>
+        </button>
+        <button type="reset" class="btn btn-delete mb-4">Reset from</button>
+      </form>
+    </div>
+  </div>
+</body>

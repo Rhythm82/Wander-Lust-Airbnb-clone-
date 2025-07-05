@@ -1,0 +1,769 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #333;
+}
+
+.container {
+  flex: 1;
+}
+
+/* === Navbar === */
+.navbar {
+  height: 5rem !important;
+  padding: 8px 16px !important;
+  background-color: #fffffff6 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-link {
+  color: rgb(2, 0, 0) !important;
+  font-weight: 600 !important;
+  font-size: 1.1em !important;
+  position: relative;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 8px rgba(255, 0, 64, 0.466);
+  padding: 6px 14px;
+}
+
+.navbar-collapse {
+  background-color: rgba(255, 255, 255, 0.932); /* white with 95% opacity */
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .navbar-collapse {
+    background-color: rgba(248, 248, 248, 0.815) !important;
+  }
+}
+
+
+/* === Footer === */
+footer {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #f7f7f7;
+  border-top: 2px solid #eee;
+}
+
+.f-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.f-info-socials i {
+  margin: 0 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.f-info-socials i:hover {
+  transform: scale(1.2);
+}
+
+.f-info-links a {
+  margin: 0 6px;
+  font-weight: 500;
+  color: #e63946;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.f-info-links a:hover {
+  color: #ff4757;
+}
+
+
+
+
+
+
+.heading {
+  font-size: 2.2em;
+  font-weight: 500;
+  color: #e63946;
+}
+
+/* === Container Grid === */
+#main-container {
+  padding: 0.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.1rem;
+}
+
+/* === Card Styling === */
+.hotel-card {
+  background: rgba(255, 255, 255, 0.979);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1px !important;
+  margin-bottom: 8px !important;
+}
+
+.hotel-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4);
+  background: linear-gradient(180deg, #fff 80%, rgba(255, 0, 64, 0.05));
+}
+
+/* === Image Styling === */
+.card-img-top {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+/* === Card Body === */
+.card-body {
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* === Title Link === */
+.card-title a {
+  color: #036ee7;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+.card-title a:hover {
+  text-decoration: underline;
+}
+
+/* === Price Highlight === */
+.hotel-price {
+  color: #363636;
+  font-weight: bold;
+}
+
+/* === Button Styling === */
+.glow-btn,
+.btn-primary {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 7px 2px;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 2px;
+}
+
+.glow-btn:hover,
+.btn-primary:hover {
+  box-shadow: 0 0 15px rgba(255, 0, 21, 0.678);
+  transform: scale(1.05);
+}
+
+
+/* === Responsive Cards per Row === */
+
+/* Optional: Make all cards equal height */
+.hotel-card .card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Create page */
+.reg {
+  background-color: #e63946 !important;
+  font-weight: 500 !important;
+  border: none !important;
+}
+
+.reg:hover {
+  background-color: #f3e8e9b7 !important;
+  color: #e63946 !important;
+  font-weight: 500 !important;
+  border: 1px solid #e63946 !important;
+}
+
+.reset {
+  background-color: #031d63e8 !important;
+  font-weight: 500 !important;
+  border: none !important;
+}
+
+.reset:hover {
+  background-color: #dbe4f1b7 !important;
+  color: #0351b8 !important;
+  font-weight: 500 !important;
+  border: 1px solid #0351b8 !important;
+}
+
+/* show */
+
+/* Only styles the hotel details card section */
+.hotel-card-custom img {
+  object-fit: cover;
+  height: 100%;
+  max-height: 500px;
+}
+
+
+.show-image:hover {
+  transform: scale(1.01) !important;
+}
+
+
+.hotel-card-custom .card {
+  max-width: 500px;
+}
+
+/* Button Styling */
+.btn-update,
+.btn-delete {
+  padding: 10px 25px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+}
+
+.btn-update {
+  background-color: #036ee7 !important;
+  color: #fff !important;
+}
+
+.btn-update:hover {
+  background-color: #3e98ff69 !important;
+  color: #000c1a !important;
+}
+
+.btn-delete {
+  background-color: #e63946 !important;
+  color: #fff !important;
+}
+
+.btn-delete:hover {
+  background-color: #fd45546c !important;
+  color: #7a000a !important;
+}
+
+.btn-review {
+  background-color: #06d35be7 !important;
+  color: #ffffff !important;
+}
+
+.btn-review:hover {
+  background-color: #69fda783 !important;
+  color: #000000 !important;
+}
+
+/* review */
+.review-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  background-color: #ffffff88 !important;
+}
+
+.review-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 24px rgba(27, 0, 0, 0.527) !important;
+}
+
+.star {
+  font-size: 1.2rem !important;
+  transition: color 0.2s ease !important;
+}
+
+.star-filled {
+  color: #dc3545 !important; /* red */
+}
+
+.star-empty {
+  color: #ccc !important;
+}
+
+#map {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.384);
+}
+
+.custom-marker {
+  border-radius: 50%;
+}
+
+
+@media (max-width: 576px) {
+  .review-card {
+    padding: 1rem;
+  }
+
+  .star {
+    font-size: 1rem;
+  }
+}
+
+/* Eminities */
+.form-check-label {
+  font-size: 1rem !important;
+}
+.box {
+  border: 0.5px solid #a81b275b !important;
+}
+h5.text-primary {
+  font-size: 1.5rem !important;
+  color: #e63946 !important; /* Bootstrap primary color */
+}
+
+.form-check-input:checked {
+  background-color: #e63946 !important;
+  border-color: #e21122d5 !important;
+}
+
+/* Eminities */
+/* Red dashed underline for unavailable amenities */
+.not-available {
+  color: #dc3545; /* Bootstrap red */
+  text-decoration: underline dashed black;
+  text-underline-offset: 4px;
+  font-weight: 500;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+  .hotel-card-custom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hotel-card-custom .card {
+    max-width: 100%;
+  }
+
+  .hotel-card-custom .carousel {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+.show-container {
+  padding: 2rem 1rem !important;
+  max-width: 1140px !important;
+  margin: auto !important;
+}
+
+.show-title {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: #e63946 !important;
+  margin-bottom: 1rem !important;
+  animation: fadeInDown 0.5s ease-in-out !important;
+}
+
+.show-image-wrapper {
+  margin-bottom: 2rem !important;
+}
+
+.show-image {
+  width: 100% !important;
+  max-height: 460px !important;
+  border-radius: 16px !important;
+  object-fit: cover !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+  transition: transform 0.3s ease !important;
+}
+.show-image:hover {
+  transform: scale(1.01) !important;
+}
+
+/* Responsive image height */
+@media (max-width: 768px) {
+  .show-image {
+    max-height: 300px !important;
+  }
+}
+
+/* === Info & Reserve Side by Side === */
+.show-main-box {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  gap: 1.5rem !important;
+  margin-bottom: 2.5rem !important;
+}
+
+.listing-info-box {
+  flex: 1 1 58% !important;
+  min-width: 300px !important;
+}
+
+.reserve-box {
+  flex: 1 1 38% !important;
+  min-width: 280px !important;
+}
+
+/* Responsive stacking */
+@media (max-width: 768px) {
+  .listing-info-box,
+  .reserve-box {
+    flex: 1 1 100% !important;
+  }
+}
+
+
+.listing-info-box {
+  background-color: #ffffff !important;
+  padding: 1.5rem !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+  animation: fadeInUp 0.6s ease-in-out !important;
+}
+
+.show-host,
+.show-email,
+.show-description,
+.show-location,
+.show-country {
+  margin-bottom: 0.6rem !important;
+  color: #444 !important;
+}
+
+.show-price {
+  font-size: 1.3rem !important;
+  font-weight: bold !important;
+  margin: 1rem 0 0.4rem !important;
+  color: #000 !important;
+}
+.per-night {
+  font-size: 0.9rem !important;
+  color: #888 !important;
+}
+
+.action-btns {
+  display: flex !important;
+  gap: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+/* Reservation box */
+.reserve-box {
+  background-color: #fff !important;
+  padding: 1.5rem !important;
+  border-radius: 16px !important;
+  border: 1px solid #e2e2e2 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+.reserve-box input[type="date"] {
+  padding: 8px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 8px !important;
+  width: 100% !important;
+  margin-bottom: 0.8rem !important;
+}
+
+.date-inputs {
+  display: flex !important;
+  gap: 1rem !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 1rem !important;
+}
+
+.guest-counter {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0.6rem 1rem !important;
+  border-radius: 8px !important;
+  background-color: #f1f1f1 !important;
+  margin-bottom: 1rem !important;
+}
+
+.guest-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+}
+
+.guest-controls button {
+  padding: 4px 10px !important;
+  background-color: #e63946 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: white !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+}
+.guest-controls button:hover {
+  background-color: #c62828 !important;
+}
+
+.btn-reserve {
+  width: 100% !important;
+  padding: 10px !important;
+  background-color: #e63946 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  color: white !important;
+  font-weight: bold !important;
+  font-size: 1rem !important;
+  cursor: pointer !important;
+}
+.btn-reserve:hover {
+  background-color: #c62828 !important;
+}
+
+.reserve-note {
+  font-size: 0.85rem !important;
+  text-align: center !important;
+  margin-top: 0.6rem !important;
+  color: #555 !important;
+}
+
+/* === Amenities === */
+.show-amenities {
+  margin-top: 2rem !important;
+}
+.section-heading {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1rem !important;
+  color: #e63946 !important;
+}
+.amenity-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  gap: 1rem !important;
+}
+.amenity-list {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-size: 1rem !important;
+}
+.not-available {
+  text-decoration: line-through !important;
+  color: #999 !important;
+}
+
+/* === Reviews === */
+
+/* === Review Section === */
+.show-reviews {
+  margin-top: 2rem !important;
+}
+
+/* Section Heading */
+.section-heading {
+  color: #e63946 !important;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Review Grid: 2 Columns on large, 1 on mobile */
+.review-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+@media (max-width: 768px) {
+  .review-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Review Card Styling */
+.review-card {
+  background: #fff !important;
+  border-radius: 16px !important;
+  padding: 1rem 1.2rem !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.6rem !important;
+  font-size: 0.95rem !important;
+}
+
+.review-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.review-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+}
+
+.review-header h6 {
+  margin-bottom: 0.2rem !important;
+  font-weight: 600 !important;
+}
+
+.review-header small {
+  font-size: 0.85rem !important;
+  color: #777 !important;
+}
+
+.review-comment {
+  margin: 0.5rem 0 !important;
+  color: #444 !important;
+}
+
+/* Stars */
+.star-box {
+  font-size: 1rem !important;
+  white-space: nowrap !important;
+}
+
+.star-filled {
+  color: #fbbf24 !important; /* amber/yellow */
+}
+
+.star-empty {
+  color: #ccc !important;
+}
+
+/* Delete Button */
+.btn-delete {
+  background-color: #e63946 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 6px 16px !important;
+  font-size: 0.85rem !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: 0.2s ease-in-out !important;
+}
+
+.btn-delete:hover {
+  background-color: #c52f3d !important;
+}
+
+/* Show More Button */
+.more-btn-wrapper {
+  text-align: center !important;
+}
+
+.btn-showmore {
+  background: none !important;
+  color: #e63946 !important;
+  font-weight: 500 !important;
+  border: 2px solid #e63946 !important;
+  padding: 6px 16px !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+
+.btn-showmore:hover {
+  background: #e63946 !important;
+  color: white !important;
+}
+
+/* === Map Section === */
+.show-map {
+  margin-top: 2rem !important;
+}
+#map {
+  width: 100% !important;
+  height: 400px !important;
+  border-radius: 16px !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* === Button Shared === */
+.btn-update,
+.btn-delete {
+  padding: 10px 25px !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-radius: 8px !important;
+}
+
+.btn-update {
+  background-color: #036ee7 !important;
+  color: #fff !important;
+}
+
+.btn-update:hover {
+  background-color: #3e98ff69 !important;
+  color: #000c1a !important;
+}
+
+.btn-delete {
+  background-color: #e63946 !important;
+  color: #fff !important;
+}
+
+.btn-delete:hover {
+  background-color: #fd45546c !important;
+  color: #7a000a !important;
+}
+
+/* === Animations === */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+

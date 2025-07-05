@@ -1,0 +1,187 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+  <style>
+    #filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 0 rem 0;
+      padding: 0 1rem;
+    }
+
+
+    .filter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 60px;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    .filter:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .filter p {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-size: 0.8em;
+    }
+
+    @media (max-width: 768px) {
+      #filters {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding: 0.5rem;
+        gap: 1rem;
+        -webkit-overflow-scrolling: touch;
+        /* smooth scrolling on iOS */
+      }
+
+      .filter {
+        flex: 0 0 auto;
+        /* prevent shrinking, allow scrolling */
+      }
+    }
+
+    #filters::-webkit-scrollbar {
+      display: none;
+    }
+
+    #filters {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+  </style>
+
+  <!-- <div class="heading">
+    All Hotels Listings
+  </div> -->
+  <div id="filters">
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Trending"><i class="fa-solid fa-fire fa-xl" style="color: #e15151;"></i></a>
+      </div>
+      <p>Trending</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Rooms"><i class="fa-solid fa-bed fa-xl" style="color: #96a4b0;"></i></a>
+      </div>
+      <p>Rooms</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Amazing views"><i class="fa-solid fa-mountain-sun fa-xl"
+            style="color: #6b9fc7;"></i></a>
+      </div>
+      <p>Amazing views</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Beach"><i class="fa-solid fa-umbrella-beach fa-xl" style="color: #e19237;"></i></a>
+      </div>
+      <p>Beach</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Pool"><i class="fa-solid fa-water-ladder" style="color: #70bbca;"></i></a>
+      </div>
+      <p>Pool</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Amazing Cities"><i class="fa-solid fa-city fa-xl" style="color: #00228a;"></i></a>
+      </div>
+      <p>Amazing Cities</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Castles"><i class="fa-brands fa-fort-awesome fa-xl" style="color: #dac22b;"></i></a>
+      </div>
+      <p>Castles</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Camping"><i class="fa-solid fa-tent fa-xl" style="color: #78ab4f;"></i></a>
+      </div>
+      <p>Camping</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Forest"><i class="fa-solid fa-tree fa-xl" style="color: #116e52;"></i></a>
+      </div>
+      <p>Forest</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Caravan"><i class="fa-solid fa-caravan fa-xl" style="color: #9a3c8e;"></i></a>
+      </div>
+      <p>Caravan</p>
+    </div>
+
+    <div class="filter mt-3">
+      <div>
+        <a href="/list/category/Arctic"><i class="fa-solid fa-snowflake fa-xl" style="color: #5aa5df;"></i></a>
+      </div>
+      <p>Arctic</p>
+    </div>
+
+  </div>
+
+  <div id="main-container" class="container-fluid my-4">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <% if (listOfData.length===0) { %>
+        <p class="text-danger">No hotels found for your search.</p>
+        <% } %>
+
+          <% for (let data of listOfData) { %>
+            <div class="hotel-card">
+              <a href="/list/<%= data._id %>">
+                <img class="card-img-top" src="<%= data.image.url %>" alt="Hotel Image" />
+                <div class="card-body">
+                  <h2 class="card-title">
+                    <%= data.title %>
+              </a>
+              </h2>
+              <p class="hotel-price">₹<%= data.price.toLocaleString("en-IN") %>
+                  <i class="tax-info">&nbsp;+18% GST</i>
+              </p>
+
+              <p>
+                <%= data.location || 'N/A' %>, <%= data.country || 'N/A' %>
+              </p>
+
+            </div>
+    </div>
+    <% } %>
+  </div>
+  </div>
+
+  <script>
+    let taxSwitch = document.getElementById("switchCheckDefault");
+    taxSwitch.addEventListener("click", () => {
+      let taxInfo = document.getElementsByClassName("tax-info")
+      for (let info of taxInfo) {
+        if (info.style.display != "inline") {
+          info.style.display = "inline";
+        } else {
+          info.style.display = "none";
+        }
+      }
+    })
+  </script>

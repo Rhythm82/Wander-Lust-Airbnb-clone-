@@ -1,0 +1,92 @@
+<style>
+  .btn-search {
+    background-color: #e63947f5;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0 1rem 0 1rem;
+  }
+  .btn-search:hover {
+    background-color: #ff8791a4;
+    color: #000000;
+  }
+  .btn-search i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-inp {
+    border-radius: 20px;
+    padding: 0.5 1rem 0.5 1rem;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/list" style="color: #e63947f5"
+      ><b
+        ><i
+          class="fa-duotone fa-regular fa-compass fa-shake fa-xl"
+          style="--fa-primary-color: #e63947f5; --fa-secondary-color: #d9204f"
+        ></i>
+        airbnb</b
+      ></a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/list">Explore</a>
+        </li>
+          </ul>
+        </li>
+        <li class="nav-item d-flex align-items-center ms-3">
+          <form class="d-flex" role="search" action="/list/search" method="GET">
+            <input
+              class="form-control me-2 search-inp"
+              name="title"
+              type="search"
+              placeholder="Search destinations"
+              aria-label="Search"
+            />
+            <button class="btn btn-search" type="submit">
+              <i
+                class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-xs"
+                style="color: #f5f5f5"
+              ></i
+              >Search
+            </button>
+          </form>
+        </li>
+      </ul>
+      <div
+        class="d-flex align-items-center ms-auto me-4 gap-4 px-3 py-1 rounded-pill shadow-sm"
+        style="background-color: #fff"
+      >
+        <div>
+          <a class="nav-link" href="/list/create">Airbnb your home</a>
+        </div>
+        <i
+          class="fa-solid fa-user-tie fa-fade fa-lg"
+          style="color: #e63947f5"
+        ></i>
+        <% if (!currUser) { %>
+        <a class="nav-link px-2" href="/signup">Sign up</a>
+        <a class="nav-link px-2" href="/login">Login</a>
+        <% } %> <% if(currUser){ %>
+        <a class="nav-link px-2" href="/logout" style="color: #e63947f5"
+          >Log Out</a
+        >
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

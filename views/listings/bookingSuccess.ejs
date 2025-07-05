@@ -1,0 +1,11 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+<div class="text-center mt-5 p-4 border rounded">
+  <h2>Booking Confirmed ✅</h2>
+  <p><strong>Booking ID:</strong> <%= booking.bookingId %></p>
+  <p><strong>Total Price:</strong> ₹<%= booking.totalPrice %></p>
+  <p>Check-in: <%= booking.checkIn.toDateString() %></p>
+  <p>Check-out: <%= booking.checkOut.toDateString() %></p>
+
+  <a href="/list" class="btn btn-primary mt-3">Back to Home</a>
+</div>

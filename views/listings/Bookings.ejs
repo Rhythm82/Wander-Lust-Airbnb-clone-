@@ -1,0 +1,26 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+<div class="container py-4">
+  <h2 class="text-danger mb-4">📋 Bookings for <%= listing.title %></h2>
+
+  <% if (bookings.length === 0) { %>
+    <p class="text-muted">No bookings yet.</p>
+  <% } else { %>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% bookings.forEach(b => { %>
+        <div class="col">
+          <div class="p-3 border rounded shadow-sm bg-white">
+            <h5><i class="bi bi-person-circle"></i> <%= b.user.username %></h5>
+            <p>Email: <%= b.user.email %></p>
+            <p>Phone: <%= b.phone %></p>
+            <p>Rooms: <%= b.rooms %>, Guests: <%= b.guests %></p>
+            <p>Check-in: <%= new Date(b.checkIn).toDateString() %></p>
+            <p>Check-out: <%= new Date(b.checkOut).toDateString() %></p>
+            <p><strong>Total:</strong> ₹<%= b.totalPrice.toLocaleString("en-IN") %></p>
+            <p class="text-muted small">Booking ID: <%= b.bookingId %></p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>

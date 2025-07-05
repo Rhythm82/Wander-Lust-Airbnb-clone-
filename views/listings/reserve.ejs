@@ -1,0 +1,31 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+<form action="/list/<%= listing._id %>/confirm" method="POST" class="p-4 bg-white rounded shadow-sm">
+  <h4>Complete your booking</h4>
+
+  <input type="hidden" name="checkIn" value="<%= bookingData.checkIn %>">
+  <input type="hidden" name="checkOut" value="<%= bookingData.checkOut %>">
+  <input type="hidden" name="guests" value="<%= bookingData.guests %>">
+
+  <div class="mb-3">
+    <label>Name:</label>
+    <input class="form-control" type="text" name="name" value="<%= user.username %>" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label>Email:</label>
+    <input class="form-control" type="email" name="email" value="<%= user.email %>" readonly>
+  </div>
+
+  <div class="mb-3">
+    <label>Phone:</label>
+    <input class="form-control" type="text" name="phone" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Rooms:</label>
+    <input class="form-control" type="number" name="rooms" min="1" value="1" required>
+  </div>
+
+  <button class="btn btn-success w-100">Confirm Booking</button>
+</form>

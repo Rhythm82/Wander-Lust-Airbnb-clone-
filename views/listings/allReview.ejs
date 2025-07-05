@@ -1,0 +1,46 @@
+<% layout('/layouts/boilerplate.ejs') %>
+
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4 text-center heading">All Reviews for <%= data.title %></h2>
+
+    <% if (data.reviews.length === 0) { %>
+    <p class="text-muted text-center">No reviews yet.</p>
+    <% } else { %> <% data.reviews.forEach(review => { %>
+    <div class="card shadow-sm mb-4 p-4 rounded-4">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <div>
+          <h6 class="fw-bold mb-1">
+            <%= review.author.username || "Anonymous" %>
+          </h6>
+          <small class="text-muted">
+            <%= new Date(review.createdAt).toLocaleDateString("en-GB") %>
+          </small>
+        </div>
+        <div>
+          <% let rating = parseInt(review.rating); %> <% for (let i = 1; i <= 5;
+          i++) { %> <% if (i <= rating) { %>
+          <span class="text-warning">&#9733;</span>
+          <% } else { %>
+          <span class="text-secondary">&#9733;</span>
+          <% } %> <% } %>
+        </div>
+      </div>
+      <p class="mt-2 mb-0 text-dark"><%= review.comment %></p>
+
+      <% if(currUser && currUser._id.equals(review.author._id)){ %>
+      <form
+        action="/list/<%= data._id %>/reviews/<%=review._id%>?_method=Delete"
+        method="POST"
+      >
+        <button type="submit" class="btn btn-delete mt-3">Delete</button>
+      </form>
+      <% } %>
+    </div>
+    <% }) %> <% } %>
+
+    <div class="text-center mt-4">
+      <a href="/list/<%= data._id %>" class="btn btn-secondary">← Back to Hotel</a>
+    </div>
+  </div>
+</body>
