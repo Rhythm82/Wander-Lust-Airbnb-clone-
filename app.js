@@ -104,9 +104,9 @@ passport.deserializeUser(User.deserializeUser())
 
 
 
-// app.get("/", (req, res) => {
-//   res.send("hi from server");
-// });
+app.get("/", (req, res) => {
+  res.redirect("/list")
+});
 
 
 app.use("/list", listRoute);
